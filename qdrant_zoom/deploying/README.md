@@ -2,8 +2,6 @@
 
 This directory contains the deployment configuration and code for the Qdrant Zoom project, which is a part of the larger EmbedEval application.
 
-Here is a link to the site you will build: https://qdrant-zoom-aws.vercel.app/
-
 ## 📁 Directory Structure
 
 - `app/`: Contains the Next.js application code
