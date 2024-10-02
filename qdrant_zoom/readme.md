@@ -7,7 +7,7 @@ In this repo we will build a website so that search thought your zoom meetings.
 
 You'll learn how to get data from an API, how to store it in a vector database and how to search through it using Qdrant.
 
-Here is the final site if you want to check it out: https://zoom-qdrant.vercel.app/
+Here is the final site if you want to check it out: [https://zoom-qdrant.vercel.app/](https://qdrant-zoom-aws.vercel.app/)
 
 If you want to build the site with your own Zoom data, change the values in the `.env.local` file.
 
