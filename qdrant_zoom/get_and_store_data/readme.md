@@ -1,6 +1,19 @@
-# QDrant / Zoom Meeting 
+# Qdrant / Zoom Meeting Search
 
-This project is a Node.js application designed to fetch and process data from the Zoom API, including user information, meeting recordings, and meeting summaries. It stores the processed data in a Qdrant Cloud collection and implements Qdrant for vector search capabilities.
+This project demonstrates how to build a RAG (Retrieval-Augmented Generation) application using Qdrant and the Zoom API.
+
+Built by Ojus Save and Thierry Damiba
+
+Key features:
+- Fetch data from Zoom API (user information, meeting recordings, and summaries)
+- Store processed data in a Qdrant Cloud collection
+- Implement vector search capabilities using Qdrant
+
+In this project, we will build a website where you can chat with your own collection of data and deploy it on a website. We're using the Zoom API as an example to demonstrate how to fetch and process data, but you can adapt this approach for other data sources as well. If you want to learn more about how to get your data into Qdrant, check out this repo with examples for different data sources: https://github.com/qdrant/examples
+
+The URL https://zoom-qdrant.vercel.app/ showcases a sample of the finished product, giving you an idea of what your deployed application could look like. This example uses sample Zoom meeting data, but remember that you can customize the app to work with your own unique dataset, or your own Zoom meeting data.
+
+This guide will walk you through setting up the environment, fetching and storing data, and building a query system with Qdrant.
 
 ## Table of Contents
 
@@ -79,9 +92,59 @@ This project is a Node.js application designed to fetch and process data from th
       4. Copy account ID, client ID, and client secret
       5. Paste into `config.js`
 6. Run the application `node server.js`
+
+## How This App Works
+
+When you run `node server.js`, the following sequence of events occurs:
+
+1. **Environment Setup**: 
+   - The application loads environment variables from the `.env.local` file, which includes necessary API keys and configuration settings.
+
+2. **Data Fetching**:
+   - The `fetchAllData()` function from `zoomapi.js` is called.
+   - This function retrieves user information, meeting recordings, and meeting summaries from the Zoom API.
+   - The data is processed and formatted for storage.
+
+3. **Data Insertion**:
+   - After fetching all the data, the application triggers the Qdrant insertion process.
+   - It spawns a Python subprocess to run the `vector/insert.py` script.
+   - This script takes the processed Zoom data and inserts it into the specified Qdrant collection.
+
+4. **Error Handling**:
+   - Throughout the process, any errors are caught and logged to the console.
+   - This includes API request errors, data processing issues, or problems with the Qdrant insertion.
+5. **Completion**:
+   - Once all data has been successfully fetched and stored, the application logs a completion message.
+   - If any errors occurred during the process, they will be displayed in the console output.
+
+6. **Queries**:
+   - After the data insertion is complete, you can start querying the stored data using Qdrant.
+   - Use the provided query interface to search through the sample Zoom meeting data in the Qdrant collection.
+
+This process allows you to easily fetch your latest Zoom meeting data and store it in a vector database for future querying and analysis.
+
+## Why Use JavaScript and Python Together?
+
+In this project, we use both JavaScript (Node.js) and Python in the same folder. This approach, while unconventional, offers some unique advantages:
+
+1. **Leveraging Strengths**: JavaScript (Node.js) excels at handling asynchronous operations and building web servers, making it ideal for interacting with the Zoom API and managing the overall application flow. Python, on the other hand, has robust libraries for data processing and machine learning tasks, which are crucial for working with vector databases like Qdrant.
+
+2. **Ecosystem Compatibility**: Some libraries and SDKs are better supported or more feature-rich in one language over the other. By using both, we can leverage the best tools for each task without compromise.
+
+3. **Flexibility**: This approach allows developers to work in the language they're most comfortable with for specific tasks. It also provides a pathway for gradually migrating between languages if needed in the future.
+
+4. **Learning Opportunity**: For educational purposes, this setup demonstrates how to integrate different programming languages in a single project, which is a valuable skill in diverse tech stacks.
+
+5. **Rapid Prototyping**: Sometimes, it's faster to prototype certain features in one language over another. This setup allows for quick experimentation and development.
+
+While this approach has its benefits, it's important to note that it can increase complexity in terms of project setup and maintenance. In a production environment, you might consider using language-specific APIs or microservices architecture for a more standardized approach. However, for this example project, the combined use of JavaScript and Python allows for a more flexible approach you can modify for your use case. 
+
+For example, you might want to use the Qdrant JavaScript client to interact with Qdrant in the same way you use the Python SDK in this project. You can find the Qdrant JavaScript client [here](https://github.com/qdrant/qdrant-js). Or you might want to use Python for your server with Django-check out this article from Kacper L about Django.
+
+
 ## Configuration
 
-Edit the `.env.local` file to include your Qdrant, Zoom and Anthropic API credentials
+Edit the `.env.local` file to include your credentials
 
 ## Usage
 
