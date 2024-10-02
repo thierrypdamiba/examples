@@ -1,5 +1,5 @@
 # Qdrant Zoom RAG Application
-You can view the deployed application here: https://zoom-qdrant.vercel.app/
+You can view the deployed application here: [https://zoom-qdrant.vercel.app/](https://qdrant-zoom-aws.vercel.app/)
 
 This repository demonstrates how to build a Retrieval-Augmented Generation (RAG) application using Qdrant, focusing on Zoom meeting data. The project is divided into three main parts:
 
