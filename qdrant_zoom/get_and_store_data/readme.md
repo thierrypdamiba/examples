@@ -11,7 +11,7 @@ Key features:
 
 In this project, we will build a website where you can chat with your own collection of data and deploy it on a website. We're using the Zoom API as an example to demonstrate how to fetch and process data, but you can adapt this approach for other data sources as well. If you want to learn more about how to get your data into Qdrant, check out this repo with examples for different data sources: https://github.com/qdrant/examples
 
-The URL https://zoom-qdrant.vercel.app/ showcases a sample of the finished product, giving you an idea of what your deployed application could look like. This example uses sample Zoom meeting data, but remember that you can customize the app to work with your own unique dataset, or your own Zoom meeting data.
+The URL [https://zoom-qdrant.vercel.app/](https://qdrant-zoom-aws.vercel.app/) showcases a sample of the finished product, giving you an idea of what your deployed application could look like. This example uses sample Zoom meeting data, but remember that you can customize the app to work with your own unique dataset, or your own Zoom meeting data.
 
 This guide will walk you through setting up the environment, fetching and storing data, and building a query system with Qdrant.
 
